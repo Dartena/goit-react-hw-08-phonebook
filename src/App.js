@@ -1,4 +1,5 @@
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
+import { useEffect } from "react";
 import { ToastContainer } from "react-toastify";
 import { AppDiv } from "./components/styles/styled";
 import { Navigate, Route, Routes } from "react-router-dom";
@@ -9,8 +10,11 @@ import LoginForm from "./components/Login/Login";
 import Contacts from "./components/Contacts/Contacts";
 import PrivateRoute from "./components/PrivateRoute/PrivateRoute";
 import About from "./components/About/About";
+import { authActions } from "./store/auth";
 
 function App() {
+  const dispatch = useDispatch();
+  useEffect(() => dispatch(authActions.fetchCurrentUser()), [dispatch]);
   const isFetchingCurrentUser = useSelector((state) => state.isFetchingCurrent);
 
   return !isFetchingCurrentUser ? (

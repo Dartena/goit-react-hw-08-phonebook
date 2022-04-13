@@ -10,7 +10,6 @@ import { getContacts } from "../../store/contacts/actions";
 export default function Contacts() {
   const contacts = useSelector(getVisibleContacts);
   const dispatch = useDispatch();
-  console.log(contacts);
   useEffect(() => dispatch(getContacts()), [dispatch]);
   return (
     <>
