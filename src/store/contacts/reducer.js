@@ -20,8 +20,7 @@ const items = createReducer([], {
   },
   [removeContact.fulfilled]: (state, { payload }) => {
     if (!payload) return;
-    const { id } = payload;
-    return state.filter((contact) => contact.id !== id);
+    return state.filter((contact) => contact.id !== payload);
   },
 });
 export default combineReducers({ items, filter });
